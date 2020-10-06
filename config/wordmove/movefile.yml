@@ -1,0 +1,55 @@
+global:
+  sql_adapter: default
+
+local:
+  vhost: "http://localhost:8000"
+  wordpress_path: "/var/www/html/"
+  database:
+    name: "wordpress"
+    user: "root"
+    password: "wordpress"
+    host: "database"
+    mysqldump_options: "--hex-blob"
+
+production:
+  vhost: "http://example.com"
+  wordpress_path: "/var/www/html"
+
+  database:
+    name: "wordpress"
+    user: "wordpress"
+    password: "wordpress"
+    host: "localhost"
+    #port: "<%= ENV['PRODUCTION_DB_PORT'] %>"
+    mysqldump_options: "--hex-blob"
+
+  exclude:
+    - '.git/'
+    - '.gitignore'
+    - '.gitmodules'
+    - '.env'
+    - 'node_modules/'
+    - 'bin/'
+    - 'tmp/*'
+    - 'Gemfile*'
+    - 'Movefile'
+    - 'movefile'
+    - 'movefile.yml'
+    - 'movefile.yaml'
+    - 'wp-config.php'
+    - 'wp-content/*.sql.gz'
+    - '*.orig'
+    - 'wp-content/uploads/backwpup*/*'
+    - '.htaccess'
+    - '.idea/'
+    - 'php.ini'
+    - '.user.ini'
+    - 'cgi-bin/'
+    - '.well-known/'
+
+  ssh:
+    host: "example.com"
+    user: "user"
+    # password: ""
+    port: 22
+    rsync_options: "--verbose"
